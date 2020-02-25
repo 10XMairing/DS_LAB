@@ -1,26 +1,8 @@
 1.
+1) Write two different queries that would produce all orders taken on October 3 rd or 4 th , 1990.
+
 SELECT * FROM ORDERS WHERE (Odate = '1990-10-03' OR Odate = '1990-10-03');
 SELECT * FROM ORDERS WHERE Odate IN ('1990-10-03', '1990-10-03');
-
-
-+------+---------+---------------------+------+------+
-| Onum | Amt     | Odate               | Cnum | Snum |
-+------+---------+---------------------+------+------+
-| 3001 |   18.69 | 1990-10-03 00:00:00 | 2008 | 1007 |
-| 3003 |  767.19 | 1990-10-03 00:00:00 | 2001 | 1001 |
-| 3002 | 1900.10 | 1990-10-03 00:00:00 | 2007 | 1004 |
-| 3005 | 5160.45 | 1990-10-03 00:00:00 | 2003 | 1002 |
-| 3006 | 1098.16 | 1990-10-03 00:00:00 | 2008 | 1007 |
-+------+---------+---------------------+------+------+
-5 rows in set (0.00 sec)
-
-
-
-------------------------------------------------------------------------------------------------------------------------
-
-
-2.
-SELECT * FROM ORDERS WHERE (Odate = '1990-10-03' OR Odate = '1990-10-04');
 
 
 +------+---------+---------------------+------+------+
@@ -41,6 +23,11 @@ SELECT * FROM ORDERS WHERE (Odate = '1990-10-03' OR Odate = '1990-10-04');
 ------------------------------------------------------------------------------------------------------------------------
 
 3.
+
+
+2) Write a query that selects all of the customers serviced by Peel or Motika.
+(Hint: the snum field relates the two tables to one another).
+
 SELECT *
 FROM CUSTOMERS, SALESPEOPLE
 WHERE SALESPEOPLE.Snum = CUSTOMERS.Snum AND (Sname = 'Peel' OR Sname = 'Motika');
@@ -57,7 +44,10 @@ WHERE SALESPEOPLE.Snum = CUSTOMERS.Snum AND (Sname = 'Peel' OR Sname = 'Motika')
 
 
 ------------------------------------------------------------------------------------------------------------------------
-4.
+3) Write a query that will produce all the customers whose names begin with a letter from ‘A’ to
+‘G’.
+
+
 SELECT * FROM CUSTOMERS WHERE Cname REGEXP '^[A-G, a-g]';
 
 
