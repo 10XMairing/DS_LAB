@@ -1,0 +1,84 @@
+1) Assume each salesperson has a 12% commission. Write a query on the orders table that will
+produce the order number, the salesperson number, and the amount of the salesperson’s
+commission for that order.
+
+
+SELECT Onum, Snum, Amt, (Amt * 12) / 100 Commission
+FROM ORDERS;
+
+
++------+------+---------+-------------+
+| Onum | Snum | Amt     | Commission  |
++------+------+---------+-------------+
+| 3001 | 1007 |   18.69 |    2.242800 |
+| 3003 | 1001 |  767.19 |   92.062800 |
+| 3002 | 1004 | 1900.10 |  228.011997 |
+| 3005 | 1002 | 5160.45 |  619.254023 |
+| 3006 | 1007 | 1098.16 |  131.779204 |
+| 3009 | 1003 | 1713.23 |  205.587598 |
+| 3007 | 1002 |   75.75 |    9.090000 |
+| 3008 | 1001 | 4723.00 |  566.760000 |
+| 3010 | 1002 | 1309.95 |  157.193994 |
+| 3011 | 1001 | 9891.88 | 1187.025586 |
++------+------+---------+-------------+
+10 rows in set (0.00 sec)
+
+
+--------------------------------------------
+
+
+2) Write a query on the Customers table that will find the highest rating in each city. Put the
+output in this form:
+For the city (city), the highest rating is : (rating).
+
+
+SELECT City, max(Rating) FROM CUSTOMERS GROUP BY City;
+
++----------+-------------+
+| City     | max(Rating) |
++----------+-------------+
+| Berlin   |         300 |
+| London   |         100 |
+| Rome     |         200 |
+| San Jose |         300 |
++----------+-------------+
+4 rows in set (0.00 sec)
+
+
+--------------------------------------------
+3) Write a query that lists customers in descending order of rating. Output the rating field first,
+followed by the customer’s name and number.
+
+
+SELECT Rating, Cname, Snum FROM CUSTOMERS ORDER BY Rating DESC;
+
+
++--------+----------+------+
+| Rating | Cname    | Snum |
++--------+----------+------+
+|    300 | Grass    | 1002 |
+|    300 | Cisneros | 1007 |
+|    200 | Giovanni | 1003 |
+|    200 | Liu      | 1002 |
+|    100 | Hoffman  | 1001 |
+|    100 | Clemens  | 1001 |
+|    100 | Pereira  | 1004 |
++--------+----------+------+
+7 rows in set (0.00 sec)
+
+
+--------------------------------------------
+4) Write a query that totals the orders for each day and places the results in descending order.
+
+
+SELECT count(Odate) totalOrders, Odate FROM ORDERS GROUP BY Odate ORDER BY totalOrders;
+
++-------------+---------------------+
+| totalOrders | Odate               |
++-------------+---------------------+
+|           1 | 1990-10-05 00:00:00 |
+|           2 | 1990-10-06 00:00:00 |
+|           2 | 1990-10-04 00:00:00 |
+|           5 | 1990-10-03 00:00:00 |
++-------------+---------------------+
+4 rows in set (0.00 sec)
