@@ -27,6 +27,8 @@ WHERE CNAME IS NOT NULL;
 +-----------+
 1 row in set (0.00 sec)
 
+------------------------------------------------------------------------------------------------------------------------
+
 
 
 3) Write a query that selects each customer’s smallest order.
@@ -47,6 +49,10 @@ SELECT min(AMT) smallestOrder, CNUM FROM ORDERS GROUP BY CNUM;
 7 rows in set (0.01 sec)
 
 
+------------------------------------------------------------------------------------------------------------------------
+
+
+
 4) Write a query that selects the first customer, in alphabetical order, whose name begins with
 G.
 
@@ -61,6 +67,54 @@ SELECT * FROM CUSTOMERS WHERE CNAME REGEXP '^[G, g]' ORDER BY CNAME;
 | 2004 | Grass    | Berlin |    300 | 1002 |
 +------+----------+--------+--------+------+
 2 rows in set (0.00 sec)
+
+
+ ------------------------------------------------------------------------------------------------------------------------
+
+
+
+5) Write a query that selects the highest rating in each city.
+
+
+SELECT max(Rating) "highestRating"
+FROM CUSTOMERS;
+
++---------------+
+| highestRating |
++---------------+
+|           300 |
++---------------+
+1 row in set (0.00 sec)
+
+
+ ------------------------------------------------------------------------------------------------------------------------
+
+
+6) Write a query that counts the number of salespeople registering orders for each day. (If a
+salesperson has more than one order on a given day, he or she should be counted only
+once.).
+
+SELECT count(Odate), Odate
+FROM ORDERS
+GROUP BY Odate;
+
+
++--------------+---------------------+
+| count(Odate) | Odate               |
++--------------+---------------------+
+|            5 | 1990-10-03 00:00:00 |
+|            2 | 1990-10-04 00:00:00 |
+|            1 | 1990-10-05 00:00:00 |
+|            2 | 1990-10-06 00:00:00 |
++--------------+---------------------+
+4 rows in set (0.00 sec)
+
+
+
+
+ ------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 

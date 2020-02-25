@@ -1,0 +1,84 @@
+1) Write a query that lists each order number followed by the name of the customer who made
+the order.
+
+select ONUM,CNAME  from ORDERS,CUSTOMERS where ORDERS.CNUM = CUSTOMERS.CNUM;
+
++------+----------+
+| ONUM | CNAME    |
++------+----------+
+| 3001 | Cisneros |
+| 3003 | Hoffman  |
+| 3002 | Pereira  |
+| 3005 | Liu      |
+| 3006 | Cisneros |
+| 3009 | Giovanni |
+| 3007 | Grass    |
+| 3008 | Clemens  |
+| 3010 | Grass    |
+| 3011 | Clemens  |
++------+----------+
+10 rows in set (0.00 sec)
+
+
+
+2) Write a query that gives the names of both the salesperson and the customer for each order
+along with the order number.
+
+
+select ONUM,SNAME,CNAME FROM ORDERS,SALESPEOPLE,CUSTOMERS where ORDERS.SNUM = SALESPEOPLE.SNUM and ORDERS.CNUM = CUSTOMERS.CNUM;
++------+--------+----------+
+| ONUM | SNAME  | CNAME    |
++------+--------+----------+
+| 3003 | Peel   | Hoffman  |
+| 3002 | Rifkin | Pereira  |
+| 3005 | Serres | Liu      |
+| 3009 | Motika | Giovanni |
+| 3007 | Serres | Grass    |
+| 3008 | Peel   | Clemens  |
+| 3010 | Serres | Grass    |
+| 3011 | Peel   | Clemens  |
++------+--------+----------+
+8 rows in set (0.01 sec)
+
+
+
+3) Write a query that produces all customers serviced by salespeople with a commission above
+12%. Output the customer’s name, the salesperson’s name, and the salesperson’s rate of
+commission.
+
+SELECT Cname, Snum, Comm*100 "Commission Rate"
+FROM CUSTOMERS
+JOIN SALESPEOPLE USING (Snum)
+WHERE Comm>.12;
+
++----------+------+-----------------+
+| Cname    | Snum | Commission Rate |
++----------+------+-----------------+
+| Liu      | 1002 |           13.00 |
+| Grass    | 1002 |           13.00 |
+| Cisneros | 1007 |           15.00 |
++----------+------+-----------------+
+3 rows in set (0.00 sec)
+
+
+4) Write a query that calculates the amount of the salesperson’s commission on each order by a
+customer with a rating above 100.
+
+
+SELECT Amt, Comm FROM SALESPEOPLE JOIN CUSTOMERS USING (Snum)
+    -> JOIN ORDERS USING(Snum) WHERE Rating>100;
+    
++---------+------+
+| Amt     | Comm |
++---------+------+
+|   18.69 | 0.15 |
+| 5160.45 | 0.13 |
+| 5160.45 | 0.13 |
+| 1098.16 | 0.15 |
+|   75.75 | 0.13 |
+|   75.75 | 0.13 |
+| 1713.23 | 0.10 |
+| 1309.95 | 0.13 |
+| 1309.95 | 0.13 |
++---------+------+
+9 rows in set (0.00 sec)
