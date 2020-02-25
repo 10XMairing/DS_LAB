@@ -1,8 +1,8 @@
 1.
 1) Write two different queries that would produce all orders taken on October 3 rd or 4 th , 1990.
 
-SELECT * FROM ORDERS WHERE (Odate = '1990-10-03' OR Odate = '1990-10-03');
-SELECT * FROM ORDERS WHERE Odate IN ('1990-10-03', '1990-10-03');
+SELECT * FROM ORDERS WHERE (Odate = '1990-10-03' OR Odate = '1990-10-04');
+SELECT * FROM ORDERS WHERE Odate IN ('1990-10-03', '1990-10-04');
 
 
 +------+---------+---------------------+------+------+
